@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo del módulo del engranaje</title>
+	<link rel="icon" href="../icojota3d.jpg" type="image/jpeg">
+    <style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #121212;
+			color: white;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			height: 100vh;
+			overflow-y: auto; /* Permite desplazamiento si es necesario */
+			padding-top: 80px; /* Ajuste para evitar que el contenido se pegue al encabezado */
+		}
+
+		header {
+			background-color: #1e1e1e;
+			padding: 20px;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 100;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Agregado para dar un poco de sombra */
+		}
+
+		h1 {
+			color: #00adb5;
+			margin: 0;
+		}
+
+		nav ul {
+			list-style: none;
+			padding: 0;
+		}
+
+		nav ul li {
+			display: inline-block;
+			margin: 0 15px;
+			position: relative;
+			color: #00adb5;
+		}
+
+		nav ul li a {
+			color: #00adb5;
+			text-decoration: none;
+			font-weight: bold;
+			padding: 10px;
+			display: block;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #1e1e1e;
+			min-width: 200px;
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+			z-index: 1;
+		}
+
+		.dropdown-content a {
+			color: white;
+			padding: 12px 16px;
+			display: block;
+			text-align: left;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		section {
+			margin: 20px;
+			padding: 20px;
+			background-color: #1e1e1e;
+			border-radius: 10px;
+			width: 300px;
+		}
+
+		button, .back-button {
+			background-color: #00adb5;
+			color: #121212;
+			padding: 10px 20px;
+			text-decoration: none;
+			font-weight: bold;
+			border-radius: 5px;
+			transition: 0.3s;
+			border: none;
+			cursor: pointer;
+		}
+
+		button:hover, .back-button:hover {
+			background-color: #008a92;
+		}
+
+		.calculator {
+			background-color: #1e1e1e;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			width: 300px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 5%; /* Espacio adicional para los elementos debajo */
+		}
+
+		label {
+			display: block;
+			margin-top: 10px;
+			color: #ddd;
+		}
+
+		input {
+			width: 100%;
+			padding: 10px;
+			margin-top: 5px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			background-color: #2e2e2e;
+			color: white;
+		}
+
+		button {
+			#width: 100%;
+			padding: 10px;
+			background-color: #00adb5;
+			color: #121212;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-top: 6%;
+			margin-bottom: 2%;
+		}
+
+		button:hover {
+			background-color: #008a92;
+		}
+
+		#result {
+			margin-top: 20px;
+			font-weight: bold;
+			text-align: center;
+			color: #00adb5;
+		}
+		@media screen and (max-width: 768px) {  
+			body {
+				padding-top: 65%;
+			}
+		}
+
+	</style>
+	
+</head>
+<body>
+    <header>
+        <h1>Cálculo del módulo del engranaje</h1>
+		<nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+				<li><a href="visor_stl.html">Visor de STL</a></li>
+                <li class="dropdown">
+                    <ul class="dropbtn">▼ Cálculo de Engranajes ▼</ul>
+                    <div class="dropdown-content">
+                        <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
+                        <a href="modulo.html">Calcular módulo de engranaje</a>
+                    </div>
+                </li>
+				 <li class="dropdown">
+                    <ul class="dropbtn">▼ Test de impresión ▼</ul>
+                    <div class="dropdown-content">
+                        <a href="flujo.html">Test de flujo</a>
+                        <a href="temperatura.html">Test de temperatura</a>
+						<a href="retracciones.html">Test de retracciones</a>
+                    </div>
+                </li>
+				<li class="dropdown">
+                    <ul class="dropbtn">▼ Filamento PET Casero ▼</ul>
+                    <div class="dropdown-content">
+                        <a href="ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
+                        <a href="cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
+                    </div>
+                </li>
+				<li><a href="editor_gcode.html">Editor de Gcode online</a></li>
+				<li><a href="mailto:correo@example.com">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="calculator">        
+        <label for="dientes">Número de dientes:</label>
+        <input type="number" id="dientes" value="" min="1">
+
+        <label for="diametro">Diámetro exterior (mm):</label>
+        <input type="number" id="diametro" value="" step="0.001">
+
+        <button onclick="calcularModulo()">Calcular módulo</button>
+
+        <div id="result"></div>
+    </section>
+
+    <script>
+        function calcularModulo() {
+            const dientes = parseFloat(document.getElementById('dientes').value);
+            const diametro = parseFloat(document.getElementById('diametro').value);
+
+            if (dientes > 0 && diametro > 0) {
+                // Fórmula: módulo = (diámetro exterior) / (número de dientes + 2)
+                const modulo = diametro / (dientes + 2);
+                document.getElementById('result').textContent = `El módulo necesario es: ${modulo.toFixed(3)}`;
+            } else {
+                document.getElementById('result').textContent = "Por favor, introduce valores válidos.";
+            }
+        }
+    </script>
+</body>
+</html>

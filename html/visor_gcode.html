@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de GCode 3D</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        #container { width: 100%; height: 600px; }
+        input[type="file"] { position: absolute; top: 20px; left: 20px; z-index: 10; }
+    </style>
+</head>
+<body>
+    <h1>Simulador de GCode</h1>
+    <input type="file" id="fileInput" accept=".gcode">
+    <div id="container"></div>
+
+    <!-- Incluir Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // Inicializa la escena de three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById("container").appendChild(renderer.domElement);
+
+        // Crea una luz para iluminar la escena
+        const light = new THREE.AmbientLight(0x404040);  // Luz suave
+        scene.add(light);
+
+        // Agrega un cubo para visualización de referencia
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        // Variables para controlar el movimiento de las trayectorias del GCode
+        let gcodeLines = [];
+
+        // Función para animar la visualización
+        function animate() {
+            requestAnimationFrame(animate);
+
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Función para cargar el archivo GCode
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const gcode = e.target.result;
+                parseGCode(gcode);
+            };
+
+            if (file) {
+                reader.readAsText(file);
+            }
+        });
+
+        // Función para procesar el GCode y crear las trayectorias
+        function parseGCode(gcode) {
+            const lines = gcode.split("\n");
+            const pathMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+            const geometry = new THREE.Geometry();
+
+            lines.forEach(line => {
+                // Filtra líneas de GCode válidas (G0/G1) y extrae las coordenadas
+                if (line.startsWith('G0') || line.startsWith('G1')) {
+                    const coords = {};
+                    const parts = line.split(' ');
+                    parts.forEach(part => {
+                        if (part.startsWith('X')) coords.x = parseFloat(part.slice(1));
+                        if (part.startsWith('Y')) coords.y = parseFloat(part.slice(1));
+                        if (part.startsWith('Z')) coords.z = parseFloat(part.slice(1));
+                    });
+
+                    if (coords.x !== undefined && coords.y !== undefined) {
+                        geometry.vertices.push(new THREE.Vector3(coords.x, coords.y, coords.z || 0));
+                    }
+                }
+            });
+
+            // Crear la línea en la escena para mostrar el GCode
+            const line = new THREE.Line(geometry, pathMaterial);
+            scene.add(line);
+            camera.position.z = 10;
+        }
+    </script>
+</body>
+</html>

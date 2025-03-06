@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de G-code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto;
+            padding-top: 100px;
+            gap: 20px;
+        }
+
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #00adb5;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #00adb5;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1e1e1e;
+            min-width: 200px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            text-align: left;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            margin-top: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #00adb5;
+            font-weight: bold;
+        }
+
+        .form-container {
+            border: 2px solid #00adb5;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #1e1e1e;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #333;
+            color: white;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: #00adb5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #008c8c;
+        }
+
+        input[type="file"] {
+            background-color: #00adb5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: auto;
+            display: inline-block;
+            margin-top: 2%;
+        }
+
+        input[type="file"]:hover {
+            background-color: #008c8c;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                width: 90%;
+                text-align: justify;
+                padding-top: 50%;
+            }
+
+            .content p {
+                font-size: 16px;
+            }
+
+            .form-container input {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Editor de GCODE Online</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="visor_stl.html">Visor de STL</a></li>
+                <li class="dropdown">
+                    <a href="#">▼ Cálculo de Engranajes ▼</a>
+                    <div class="dropdown-content">
+                        <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
+                        <a href="modulo.html">Calcular módulo de engranaje</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">▼ Test de impresión ▼</a>
+                    <div class="dropdown-content">
+                        <a href="flujo.html">Test de flujo</a>
+                        <a href="temperatura.html">Test de temperatura</a>
+                        <a href="retracciones.html">Test de retracciones</a>
+                    </div>
+                </li>
+				<li class="dropdown">
+                    <a href="#">▼ Filamento PET Casero ▼</a>
+                    <div class="dropdown-content">
+                        <a href="ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
+                        <a href="cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
+                    </div>
+                </li>
+
+                <li><a href="editor_gcode.html">Editor de Gcode online</a></li>
+                <li><a href="mailto:correo@example.com">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <input type="file" id="fileInput" onchange="loadGcode()" accept=".gcode" />
+
+    <div id="editorContainer" style="display: none;">
+        <div class="form-container">
+            <label for="extruderTemp">Temperatura del extrusor:</label>
+            <input type="number" id="extruderTemp" />
+            
+            <label for="bedTemp">Temperatura de la cama:</label>
+            <input type="number" id="bedTemp" />
+            
+            <label for="printSpeed">Velocidad de impresión (mm/s):</label>
+            <input type="number" id="printSpeed" />
+            
+            <button onclick="generateGcode()">Generar G-code Modificado</button>
+        </div>
+    </div>
+
+    <script>
+        let originalGcode = [];
+        let modifiedGcode = [];
+        let extruderTemps = [];
+        let bedTemps = [];
+        let speeds = [];
+
+        function loadGcode() {
+            const fileInput = document.getElementById("fileInput");
+
+            if (fileInput.files.length === 0) {
+                alert("Por favor, sube un archivo G-code.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                originalGcode = event.target.result.split('\n'); // Dividir el G-code por líneas
+                extruderTemps = [];
+                bedTemps = [];
+                speeds = [];
+                modifiedGcode = [];
+
+                for (let line of originalGcode) {
+                    if (line.startsWith("M104") || line.startsWith("M109")) {
+                        let match = line.match(/S(\d+)/);
+                        if (match) {
+                            extruderTemps.push(parseInt(match[1]));
+                        }
+                    }
+                    else if (line.startsWith("M140") || line.startsWith("M190")) {
+                        let match = line.match(/S(\d+)/);
+                        if (match) {
+                            bedTemps.push(parseInt(match[1]));
+                        }
+                    }
+                    else if (line.startsWith("G1")) {
+                        let match = line.match(/F(\d+)/);
+                        if (match) {
+                            speeds.push(parseInt(match[1]));
+                        }
+                    }
+                }
+
+                document.getElementById("editorContainer").style.display = "block";
+
+                document.getElementById("extruderTemp").value = extruderTemps[0] || '';
+                document.getElementById("bedTemp").value = bedTemps[0] || '';
+                document.getElementById("printSpeed").value = (speeds[0] / 60) || '';
+            };
+
+            reader.readAsText(file);
+        }
+
+        function generateGcode() {
+			if (originalGcode.length === 0) {
+				alert("No has cargado un archivo G-code. Por favor, selecciona un archivo primero.");
+				return;
+			}
+
+			const newExtruderTemp = parseInt(document.getElementById("extruderTemp").value);
+			const newBedTemp = parseInt(document.getElementById("bedTemp").value);
+			const newSpeed = parseInt(document.getElementById("printSpeed").value) * 60;
+
+			const extruderTempDiff = newExtruderTemp - extruderTemps[0];
+			const bedTempDiff = newBedTemp - bedTemps[0];
+			const speedDiff = newSpeed - speeds[0];
+
+			let extruderIndex = 0;
+			let bedIndex = 0;
+			let speedIndex = 0;
+
+			modifiedGcode = originalGcode.map(line => {
+				if (line.startsWith("M104") || line.startsWith("M109")) {
+					if (extruderIndex < extruderTemps.length) {
+						extruderIndex++;
+						return line.replace(/S\d+/, `S${newExtruderTemp}`);
+					}
+				}
+				else if (line.startsWith("M140") || line.startsWith("M190")) {
+					if (bedIndex < bedTemps.length) {
+						bedIndex++;
+						return line.replace(/S\d+/, `S${newBedTemp}`);
+					}
+				}
+				else if (line.startsWith("G1")) {
+					if (speedIndex < speeds.length) {
+						speedIndex++;
+						return line.replace(/F\d+/, `F${newSpeed}`);
+					}
+				}
+				return line;
+			});
+
+			const blob = new Blob([modifiedGcode.join("\n")], { type: "text/plain" });
+
+			// Obtener el nombre del archivo original
+			const fileInput = document.getElementById("fileInput");
+			const originalFileName = fileInput.files[0].name;
+
+			// Separar el nombre y la extensión
+			const fileNameWithoutExtension = originalFileName.substring(0, originalFileName.lastIndexOf('.'));
+			const fileExtension = originalFileName.substring(originalFileName.lastIndexOf('.'));
+
+			// Crear el nuevo nombre con el sufijo "_jota"
+			const newFileName = fileNameWithoutExtension + "_jota" + fileExtension;
+
+			// Crear el enlace para descargar el archivo
+			const link = document.createElement("a");
+			link.href = URL.createObjectURL(blob);
+			link.download = newFileName;  // Usar el nuevo nombre
+			link.click();
+		}
+    </script>
+</body>
+</html>
