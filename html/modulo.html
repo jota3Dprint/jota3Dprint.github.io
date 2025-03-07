@@ -156,6 +156,24 @@
 			text-align: center;
 			color: #00adb5;
 		}
+		.content {
+            max-width: 800px;
+            padding: 20px;
+            text-align: left;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            margin-top: 20px; /* Espaciado adicional para separación */
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
 		@media screen and (max-width: 768px) {  
 			body {
 				padding-top: 65%;
@@ -211,7 +229,13 @@
 
         <div id="result"></div>
     </section>
-
+<div class="content">
+	<p>El módulo de un engranaje es una medida que indica el tamaño de los dientes. Se define como la relación entre el diámetro primitivo del engranaje y el número de dientes.</p>
+	<b>¿Por qué es importante?</b>
+<ul>Determina el tamaño de los dientes.</ul>
+<ul>Engranajes que trabajan juntos deben tener el mismo módulo.</ul>
+<ul>Afecta la fuerza y suavidad del engranaje.</ul>
+</div>
     <script>
         function calcularModulo() {
             const dientes = parseFloat(document.getElementById('dientes').value);
