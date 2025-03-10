@@ -1,0 +1,4 @@
+#301 Redirects for .htaccess
+
+#Redirect a single page:
+Redirect 301 /index.html https://jota3dprint.github.io/
