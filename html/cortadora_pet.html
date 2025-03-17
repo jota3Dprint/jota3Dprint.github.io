@@ -115,6 +115,21 @@
             color: #00adb5;
             font-weight: bold;
         }
+	.contenedor-imagen {
+	    width: 100%;               /* El contenedor ocupa todo el ancho disponible */
+	    height: 50vh;              /* El contenedor ocupa el 50% de la altura de la pantalla */
+	    overflow: hidden;          /* Oculta cualquier contenido que se salga del contenedor */
+	    display: flex;             /* Usamos flexbox para centrar la imagen */
+	    justify-content: center;   /* Centra la imagen horizontalmente */
+	    align-items: center;       /* Centra la imagen verticalmente */
+	    position: relative;        /* Necesario para la posición de la imagen */
+	}
+
+	.contenedor-imagen img {
+	    width: 100%;               /* La imagen se ajusta al ancho del contenedor */
+	    height: 100%;              /* La imagen se ajusta a la altura del contenedor */
+	    object-fit: cover;         /* La imagen cubre todo el contenedor sin distorsionarse */
+	}
 
         @media (max-width: 600px) {
             .content {
@@ -162,6 +177,9 @@
         <p>Comencé con un modelo básico de <span class="highlight">cortadora con cuchillas</span>, pero presentaba problemas de precisión en el corte y desgaste rápido de las cuchillas.</p>
         <p>Buscando una solución más eficiente, decidí probar la <span class="highlight">cortadora con rodamientos</span>, aunque su construcción resultaba complicada debido a la necesidad de afilar los rodamientos con herramientas especializadas.</p>
         <p>Finalmente, encontré una alternativa: los <span class="highlight">rodamientos 608RS</span>, que no requieren afilado, facilitando el proceso de fabricación y mejorando la calidad del corte.</p>
+	<div class="contenedor-imagen">
+        	<img src="Creality CR-10 SE.jpeg" alt="Imagen ajustada" />
+    	</div>
     </div>
 </body>
 </html>
