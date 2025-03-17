@@ -1,121 +1,167 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<link rel="canonical" href="https://jota3dprint.github.io/">
-<script>
-  if (window.location.pathname.endsWith("index.html")) {
-    window.location.replace(window.location.origin + "/");
-  }
-</script>
+    <link rel="canonical" href="https://jota3dprint.github.io/">
+    <script>
+        if (window.location.pathname.endsWith("index.html")) {
+            window.location.replace(window.location.origin + "/");
+        }
+    </script>
 
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJC1PG3NDC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KJC1PG3NDC');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJC1PG3NDC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KJC1PG3NDC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jota3DPrint</title>
-	<link rel="icon" href="icojota3d.jpg" type="image/jpeg">
+    <link rel="icon" href="icojota3d.jpg" type="image/jpeg">
 
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: white;
-    text-align: center;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
 
-header {
-    background-color: #1e1e1e;
-    padding: 20px;
-}
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+        }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-nav ul li {
-    display: inline-block;
-    margin: 0 15px;
-    position: relative;
-	color: #00adb5;
-}
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+            position: relative;
+            color: #00adb5;
+        }
 
-nav ul li a {
-    color: #00adb5;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    display: block;
-}
+        nav ul li a {
+            color: #00adb5;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
 
-/* Estilos para el menú desplegable */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #1e1e1e;
-    min-width: 200px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-    z-index: 1;
-}
+        /* Estilos para el menú desplegable */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1e1e1e;
+            min-width: 200px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
 
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    display: block;
-    text-align: left;
-}
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+        }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
-section {
-    margin: 20px;
-    padding: 20px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-}
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+        }
 
-button, .back-button {
-    background-color: #00adb5;
-    color: #121212;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-}
+        button, .back-button {
+            background-color: #00adb5;
+            color: #121212;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
 
-button:hover, .back-button:hover {
-    background-color: #008a92;
-}
+        button:hover, .back-button:hover {
+            background-color: #008a92;
+        }
 
-.contenedor-imagen {
-    width: 100%;               /* El contenedor ocupa todo el ancho disponible */
-    height: 50vh;              /* El contenedor ocupa el 50% de la altura de la pantalla */
-    overflow: hidden;          /* Oculta cualquier contenido que se salga del contenedor */
-    display: flex;             /* Usamos flexbox para centrar la imagen */
-    justify-content: center;   /* Centra la imagen horizontalmente */
-    align-items: center;       /* Centra la imagen verticalmente */
-    position: relative;        /* Necesario para la posición de la imagen */
-}
+        .contenedor-imagen {
+            width: 100%;               /* El contenedor ocupa todo el ancho disponible */
+            height: 50vh;              /* El contenedor ocupa el 50% de la altura de la pantalla */
+            overflow: hidden;          /* Oculta cualquier contenido que se salga del contenedor */
+            display: flex;             /* Usamos flexbox para centrar la imagen */
+            justify-content: center;   /* Centra la imagen horizontalmente */
+            align-items: center;       /* Centra la imagen verticalmente */
+            position: relative;        /* Necesario para la posición de la imagen */
+        }
 
-.contenedor-imagen img {
-    width: 100%;               /* La imagen se ajusta al ancho del contenedor */
-    height: 100%;              /* La imagen se ajusta a la altura del contenedor */
-    object-fit: cover;         /* La imagen cubre todo el contenedor sin distorsionarse */
-}
+        .contenedor-imagen img {
+            width: 100%;               /* La imagen se ajusta al ancho del contenedor */
+            height: 100%;              /* La imagen se ajusta a la altura del contenedor */
+            object-fit: cover;         /* La imagen cubre todo el contenedor sin distorsionarse */
+        }
+
+        /* Estilos de diseño para garantizar que los elementos no se solapen */
+        header, main, footer {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        main {
+            padding-top: 40px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                text-align: center;
+                padding: 0;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .contenedor-imagen {
+                height: 30vh; /* Ajustar la imagen para pantallas más pequeñas */
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            section {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -124,7 +170,7 @@ button:hover, .back-button:hover {
         <nav>
             <ul>
                 <li><a href="https://jota3dprint.github.io/">Inicio</a></li>
-				<li><a href="html/visor_stl.html">Visor de STL</a></li>
+                <li><a href="html/visor_stl.html">Visor de STL</a></li>
                 <li class="dropdown">
                     <ul class="dropbtn">▼ Cálculo de Engranajes ▼</ul>
                     <div class="dropdown-content">
@@ -132,27 +178,27 @@ button:hover, .back-button:hover {
                         <a href="html/modulo.html">Calcular módulo de engranaje</a>
                     </div>
                 </li>
-				 <li class="dropdown">
+                <li class="dropdown">
                     <ul class="dropbtn">▼ Test de impresión ▼</ul>
                     <div class="dropdown-content">
                         <a href="html/flujo.html">Test de flujo</a>
                         <a href="html/temperatura.html">Test de temperatura</a>
-						<a href="html/retracciones.html">Test de retracciones</a>
+                        <a href="html/retracciones.html">Test de retracciones</a>
                     </div>
                 </li>
-				<li class="dropdown">
+                <li class="dropdown">
                     <ul class="dropbtn">▼ Filamento PET Casero ▼</ul>
                     <div class="dropdown-content">
                         <a href="html/ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
                         <a href="html/cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
                     </div>
                 </li>
-				<li><a href="html/editor_gcode.html">Editor de Gcode online</a></li>
-				<li><a href="mailto:correo@example.com">Contacto</a></li>
+                <li><a href="html/editor_gcode.html">Editor de Gcode online</a></li>
+                <li><a href="mailto:correo@example.com">Contacto</a></li>
             </ul>
         </nav>
     </header>
-	<div class="contenedor-imagen">
+    <div class="contenedor-imagen">
         <img src="Creality CR-10 SE.jpeg" alt="Imagen ajustada" />
     </div>
     <main>
