@@ -27,19 +27,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
+            height: 100%;
             overflow-y: auto;
-            padding-top: 100px;
-            gap: 20px;
         }
         header {
             background-color: #1e1e1e;
             padding: 20px;
             width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
         h1 {
@@ -94,7 +88,6 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             margin: 20px;
-            margin-top: 140px; /* Ajuste para evitar el solapamiento del header */
         }
         .content p {
             font-size: 18px;
@@ -139,6 +132,8 @@
         .download-buttons a:hover {
             background-color: #007a83;
         }
+
+        /* Estilo para dispositivos móviles */
         @media (max-width: 600px) {
             * {
                 margin: 0;
@@ -148,30 +143,43 @@
 
             header {
                 width: 100%;
-                height: 60px; /* Ajusta según tu diseño */
                 background-color: #fff;
                 display: flex;
-                align-items: center;
                 justify-content: center;
+                align-items: center;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                position: relative; /* Asegura que no flote encima del contenido */
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-top: 10px;
+                color: #00adb5;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 10px;
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
             }
 
             .content {
                 width: 90%;
                 text-align: justify;
-                margin: 60px auto 0 auto; /* Separa el content del header */
-                padding: 10px;
-                margin-top: 120px; /* Ajuste adicional para evitar el solapamiento */
+                margin: 20px auto;
+                padding: 15px;
             }
 
             .content p {
                 font-size: 16px;
             }
 
-            .form-container input {
-                padding: 8px;
+            .contenedor-imagen {
                 width: 100%;
+                height: 40vh;
             }
         }
 
@@ -180,54 +188,56 @@
 <body>
     <header>
         <h1>Cortadora de cinta PET con rodamientos</h1>
-	<nav>
-            <ul>
-                <li><a href="https://jota3dprint.github.io/">Inicio</a></li>
-                <li><a href="visor_stl.html">Visor de STL</a></li>
-                <li class="dropdown">
-                    <a href="#">▼ Cálculo de Engranajes ▼</a>
-                    <div class="dropdown-content">
-                        <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
-                        <a href="modulo.html">Calcular módulo de engranaje</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#">▼ Test de impresión ▼</a>
-                    <div class="dropdown-content">
-                        <a href="flujo.html">Test de flujo</a>
-                        <a href="temperatura.html">Test de temperatura</a>
-                        <a href="retracciones.html">Test de retracciones</a>
-                    </div>
-                </li>
-				<li class="dropdown">
-                    <a href="#">▼ Filamento PET Casero ▼</a>
-                    <div class="dropdown-content">
-                        <a href="ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
-                        <a href="cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
-                    </div>
-                </li>
-
-                <li><a href="editor_gcode.html">Editor de Gcode online</a></li>
-                <li><a href="mailto:correo@example.com">Contacto</a></li>
-            </ul>
-        </nav>
     </header>
+
+    <nav>
+        <ul>
+            <li><a href="https://jota3dprint.github.io/">Inicio</a></li>
+            <li><a href="visor_stl.html">Visor de STL</a></li>
+            <li class="dropdown">
+                <a href="#">▼ Cálculo de Engranajes ▼</a>
+                <div class="dropdown-content">
+                    <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
+                    <a href="modulo.html">Calcular módulo de engranaje</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">▼ Test de impresión ▼</a>
+                <div class="dropdown-content">
+                    <a href="flujo.html">Test de flujo</a>
+                    <a href="temperatura.html">Test de temperatura</a>
+                    <a href="retracciones.html">Test de retracciones</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">▼ Filamento PET Casero ▼</a>
+                <div class="dropdown-content">
+                    <a href="ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
+                    <a href="cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
+                </div>
+            </li>
+
+            <li><a href="editor_gcode.html">Editor de Gcode online</a></li>
+            <li><a href="mailto:correo@example.com">Contacto</a></li>
+        </ul>
+    </nav>
+
     <div class="content">
         <p>Durante mi investigación sobre la fabricación de <span class="highlight">filamento casero</span> reciclando botellas de PET, exploré diversos modelos de cortadoras.</p>
         <p>Comencé con un modelo básico de <span class="highlight">cortadora con cuchillas</span>, pero presentaba problemas de precisión en el corte y desgaste rápido de las cuchillas.</p>
         <p>Buscando una solución más eficiente, decidí probar la <span class="highlight">cortadora con rodamientos</span>, aunque su construcción resultaba complicada debido a la necesidad de afilar los rodamientos con herramientas especializadas.</p>
         <p>Finalmente, encontré una alternativa: los <span class="highlight">rodamientos 608RS</span>, que no requieren afilado, facilitando el proceso de fabricación y mejorando la calidad del corte.</p>
-	<div class="contenedor-imagen">
-        	<img src="uploads/cortadora_608_RS_jota3dprint.jpg" alt="cortadora pet de rodamientos 608RS" />
-    	</div>
-	<p>Una vez encontrados los rodamientos óptimos para fabricar la <strong>cortadora de PET</strong>, quedaba el problema de como hacer el corte al tornillo guía de la cinta que controla el ancho de corte.</p>
-	<p>Hice varias intentos cortando el tornillo utilizando una radial, pero al no ser completamente vertical el corte, el tornillo se debilitaba y con  el uso terminaba partiendose por el lado más debil.</p>
-	<p>Lo mismo sucedía cuando lo intentaba hacer con una sierra manual. Cualquier variación de inclinación en la hoja, por pequeña que fuera,  suponía que el corte no fuera perpendicular al plano de corte</p>
-	<p>Para solucionar este problema diseñe, con ayuda del programa <strong>Autodesk Fusion 360</strong> una herramienta que me facilitara el corte del tornillo guía.</p>
-	<div class="contenedor-imagen">
-		<img src="uploads/util_corte_tornillo_guia.jpg" alt="util para corte de tornillo guia" />   
-	</div>
-	<div class="download-buttons">
+        <div class="contenedor-imagen">
+            <img src="uploads/cortadora_608_RS_jota3dprint.jpg" alt="cortadora pet de rodamientos 608RS" />
+        </div>
+        <p>Una vez encontrados los rodamientos óptimos para fabricar la <strong>cortadora de PET</strong>, quedaba el problema de como hacer el corte al tornillo guía de la cinta que controla el ancho de corte.</p>
+        <p>Hice varias intentos cortando el tornillo utilizando una radial, pero al no ser completamente vertical el corte, el tornillo se debilitaba y con  el uso terminaba partiendose por el lado más debil.</p>
+        <p>Lo mismo sucedía cuando lo intentaba hacer con una sierra manual. Cualquier variación de inclinación en la hoja, por pequeña que fuera,  suponía que el corte no fuera perpendicular al plano de corte</p>
+        <p>Para solucionar este problema diseñe, con ayuda del programa <strong>Autodesk Fusion 360</strong> una herramienta que me facilitara el corte del tornillo guía.</p>
+        <div class="contenedor-imagen">
+            <img src="uploads/util_corte_tornillo_guia.jpg" alt="util para corte de tornillo guia" />   
+        </div>
+        <div class="download-buttons">
             <a href="uploads/stl/cortadora_608_RS_jota3dprint.stl" download="cortadora_608_RS_jota3dprint.stl">Descargar Cortadora PET con rodamientos</a>
             <a href="uploads/stl/Guia_para_cortar_tornillo_8mm_jota3dprint.stl" download="Guia_para_cortar_tornillo_8mm_jota3dprint.stl">Descargar herramienta corte tornillo guía</a>
         </div>
