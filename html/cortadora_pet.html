@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="canonical" href="https://jota3dprint.github.io/html/cortadora_pet.html">	
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJC1PG3NDC"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'G-KJC1PG3NDC');
-	</script>
+    <link rel="canonical" href="https://jota3dprint.github.io/html/cortadora_pet.html">    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJC1PG3NDC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KJC1PG3NDC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cortadora de cinta PET con rodamientos</title>
@@ -21,7 +19,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
@@ -32,10 +29,9 @@
             align-items: center;
             height: 100vh;
             overflow-y: auto;
-            padding-top: 100px; /* Ajuste para evitar que la content se solape con el header */
-            gap: 20px; /* Espaciado entre header y content */
+            padding-top: 100px;
+            gap: 20px;
         }
-
         header {
             background-color: #1e1e1e;
             padding: 20px;
@@ -46,53 +42,10 @@
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
-
         h1 {
             color: #00adb5;
             margin: 0;
         }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-            position: relative;
-        }
-
-        nav ul li a {
-            color: #00adb5;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px;
-            display: block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #1e1e1e;
-            min-width: 200px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
         .content {
             max-width: 800px;
             padding: 20px;
@@ -101,92 +54,70 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             margin: 20px;
-            margin-top: 20px; /* Espaciado adicional para separación */
         }
-
         .content p {
             font-size: 18px;
             line-height: 1.6;
             color: #ddd;
             margin-bottom: 15px;
         }
-
         .highlight {
             color: #00adb5;
             font-weight: bold;
         }
-	.contenedor-imagen {
-	    width: 100%;               /* El contenedor ocupa todo el ancho disponible */
-	    height: 50vh;              /* El contenedor ocupa el 50% de la altura de la pantalla */
-	    overflow: hidden;          /* Oculta cualquier contenido que se salga del contenedor */
-	    display: flex;             /* Usamos flexbox para centrar la imagen */
-	    justify-content: center;   /* Centra la imagen horizontalmente */
-	    align-items: center;       /* Centra la imagen verticalmente */
-	    position: relative;        /* Necesario para la posición de la imagen */
-	}
-
-	.contenedor-imagen img {
-	    width: 100%;               /* La imagen se ajusta al ancho del contenedor */
-	    height: 100%;              /* La imagen se ajusta a la altura del contenedor */
-	    object-fit: cover;         /* La imagen cubre todo el contenedor sin distorsionarse */
-	}
-
-        @media (max-width: 600px) {
-            .content {
-                width: 90%;
-                text-align: justify;
-				padding-top:50%;
-            }
-
-            .content p {
-                font-size: 16px;
-            }
+        .contenedor-imagen {
+            width: 100%;
+            height: 50vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .contenedor-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .download-buttons a {
+            background-color: #00adb5;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .download-buttons a:hover {
+            background-color: #007a83;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Cortadora de cinta PET con rodamientos</h1>
-        <nav>
-            <ul>
-                <li><a href="https://jota3dprint.github.io/">Inicio</a></li>
-                <li><a href="visor_stl.html">Visor de STL</a></li>
-                <li class="dropdown">
-                    <a href="#">▼ Cálculo de Engranajes ▼</a>
-                    <div class="dropdown-content">
-                        <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
-                        <a href="modulo.html">Calcular módulo de engranaje</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#">▼ Test de impresión ▼</a>
-                    <div class="dropdown-content">
-                        <a href="flujo.html">Test de flujo</a>
-                        <a href="temperatura.html">Test de temperatura</a>
-                        <a href="retracciones.html">Test de retracciones</a>
-                    </div>
-                </li>
-                <li><a href="editor_gcode.html">Editor de Gcode online</a></li>
-                <li><a href="mailto:correo@example.com">Contacto</a></li>
-            </ul>
-        </nav>
     </header>
-
     <div class="content">
         <p>Durante mi investigación sobre la fabricación de <span class="highlight">filamento casero</span> reciclando botellas de PET, exploré diversos modelos de cortadoras.</p>
-        <p>Comencé con un modelo básico de <span class="highlight">cortadora con cuchillas</span>, pero presentaba problemas de precisión en el corte y desgaste rápido de las cuchillas.</p>
-        <p>Buscando una solución más eficiente, decidí probar la <span class="highlight">cortadora con rodamientos</span>, aunque su construcción resultaba complicada debido a la necesidad de afilar los rodamientos con herramientas especializadas.</p>
-        <p>Finalmente, encontré una alternativa: los <span class="highlight">rodamientos 608RS</span>, que no requieren afilado, facilitando el proceso de fabricación y mejorando la calidad del corte.</p>
-	<div class="contenedor-imagen">
-        	<img src="uploads/cortadora_608_RS_jota3dprint.jpg" alt="cortadora pet de rodamientos 608RS" />
-    	</div>
-	<p>Una vez encontrados los rodamientos óptimos para fabricar la <strong>cortadora de PET</strong>, quedaba el problema de como hacer el corte al tornillo guía de la cinta que controla el ancho de corte.</p>
-	<p>Hice varias intentos cortando el tornillo utilizando una radial, pero al no ser completamente vertical el corte, el tornillo se debilitaba y con  el uso terminaba partiendose por el lado más debil.</p>
-	<p>Lo mismo sucedía cuando lo intentaba hacer con una sierra manual. Cualquier variación de inclinación en la hoja, por pequeña que fuera,  suponía que el corte no fuera perpendicular al plano de corte</p>
-	<p>Para solucionar este problema diseñe, con ayuda del programa <strong>Autodesk Fusion 360</strong> una herramienta que me facilitara el corte del tornillo guía.</p>
-	<div class="contenedor-imagen">
-		<img src="uploads/util_corte_tornillo_guia.jpg" alt="util para corte de tornillo guia" />   
-	</div>
+        <p>Finalmente, encontré una alternativa: los <span class="highlight">rodamientos 608RS</span>, que no requieren afilado.</p>
+        <div class="contenedor-imagen">
+            <img src="uploads/cortadora_608_RS_jota3dprint.jpg" alt="cortadora pet de rodamientos 608RS" />
+        </div>
+        <p>Para solucionar el problema de corte del tornillo guía, diseñé una herramienta con <strong>Autodesk Fusion 360</strong>.</p>
+        <div class="contenedor-imagen">
+            <img src="uploads/util_corte_tornillo_guia.jpg" alt="util para corte de tornillo guia" />   
+        </div>
+        <div class="download-buttons">
+            <a href="uploads/cortadora.tl" download="cortadora.tl">Descargar Cortadora</a>
+            <a href="uploads/guia.tl" download="guia.tl">Descargar Guía</a>
+        </div>
     </div>
 </body>
 </html>
