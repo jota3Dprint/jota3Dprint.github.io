@@ -1,174 +1,238 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<link rel="canonical" href="https://jota3dprint.github.io/html/ancho_cinta_pet.html">
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJC1PG3NDC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KJC1PG3NDC');
-</script>
+    <link rel="canonical" href="https://jota3dprint.github.io/html/ancho_cinta_pet.html">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJC1PG3NDC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KJC1PG3NDC');
+    </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jota3D</title>
-	<link rel="icon" href="../icojota3d.jpg" type="image/jpeg">
+    <link rel="icon" href="../icojota3d.jpg" type="image/jpeg">
 
     <style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #121212;
-			color: white;
-			text-align: center;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: center;
-			height: 100vh;
-			overflow-y: auto; /* Permite desplazamiento si es necesario */
-			padding-top: 80px; /* Ajuste para evitar que el contenido se pegue al encabezado */
-		}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-		header {
-			background-color: #1e1e1e;
-			padding: 20px;
-			width: 100%;
-			position: fixed;
-			top: 0;
-			left: 0;
-			z-index: 100;
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Agregado para dar un poco de sombra */
-		}
+        header {
+            background-color: #1e1e1e;
+            padding: 15px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
 
-		h1 {
-			color: #00adb5;
-			margin: 0;
-		}
+        h1 {
+            color: #00adb5;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
 
-		nav ul {
-			list-style: none;
-			padding: 0;
-		}
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 5px;
+        }
 
-		nav ul li {
-			display: inline-block;
-			margin: 0 15px;
-			position: relative;
-			color: #00adb5;
-		}
+        nav ul li {
+            margin: 5px;
+            position: relative;
+        }
 
-		nav ul li a {
-			color: #00adb5;
-			text-decoration: none;
-			font-weight: bold;
-			padding: 10px;
-			display: block;
-		}
+        nav ul li a, .dropbtn {
+            color: #00adb5;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            display: block;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
 
-		.dropdown-content {
-			display: none;
-			position: absolute;
-			background-color: #1e1e1e;
-			min-width: 200px;
-			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-			z-index: 1;
-		}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1e1e1e;
+            min-width: 180px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-		.dropdown-content a {
-			color: white;
-			padding: 12px 16px;
-			display: block;
-			text-align: left;
-		}
+        .dropdown-content a {
+            color: white;
+            padding: 10px 14px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
 
-		.dropdown:hover .dropdown-content {
-			display: block;
-		}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
-		section {
-			margin: 20px;
-			padding: 20px;
-			background-color: #1e1e1e;
-			border-radius: 10px;
-			width: 300px;
-		}
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-		button, .back-button {
-			background-color: #00adb5;
-			color: #121212;
-			padding: 10px 20px;
-			text-decoration: none;
-			font-weight: bold;
-			border-radius: 5px;
-			transition: 0.3s;
-			border: none;
-			cursor: pointer;
-		}
+        .calculator {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
 
-		button:hover, .back-button:hover {
-			background-color: #008a92;
-		}
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #ddd;
+            width: 100%;
+            text-align: left;
+            font-size: 0.95rem;
+        }
 
-		.calculator {
-			background-color: #1e1e1e;
-			border-radius: 10px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			padding: 20px;
-			width: 300px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-top: 5%; /* Espacio adicional para los elementos debajo */
-		}
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            background-color: #2e2e2e;
+            color: white;
+            font-size: 1rem;
+        }
 
-		label {
-			display: block;
-			margin-top: 10px;
-			color: #ddd;
-		}
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00adb5;
+            color: #121212;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
 
-		input {
-			width: 100%;
-			padding: 10px;
-			margin-top: 5px;
-			border: 1px solid #ddd;
-			border-radius: 4px;
-			background-color: #2e2e2e;
-			color: white;
-		}
+        button:hover {
+            background-color: #008a92;
+        }
 
-		button {
-			#width: 100%;
-			padding: 10px;
-			background-color: #00adb5;
-			color: #121212;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-			margin-top: 6%;
-			margin-bottom: 2%;
-		}
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #00adb5;
+            font-size: 1.1rem;
+            width: 100%;
+            word-break: break-word;
+        }
 
-		button:hover {
-			background-color: #008a92;
-		}
+        /* Media Queries para dispositivos móviles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+            
+            nav ul li a, .dropbtn {
+                padding: 6px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .dropdown-content {
+                min-width: 160px;
+            }
+            
+            main {
+                padding: 90px 15px 30px;
+            }
+            
+            .calculator {
+                padding: 15px;
+            }
+            
+            input, button {
+                padding: 10px;
+            }
+        }
 
-		#result {
-			margin-top: 20px;
-			font-weight: bold;
-			text-align: center;
-			color: #00adb5;
-		}
-
-	</style>
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                justify-content: space-around;
+            }
+            
+            nav ul li {
+                margin: 3px;
+            }
+            
+            nav ul li a, .dropbtn {
+                padding: 5px 6px;
+                font-size: 0.75rem;
+            }
+            
+            .dropdown-content {
+                min-width: 140px;
+            }
+            
+            .dropdown-content a {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+            
+            main {
+                padding: 80px 10px 20px;
+            }
+            
+            label {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -176,61 +240,63 @@
         <nav>
             <ul>
                 <li><a href="https://jota3dprint.github.io/">Inicio</a></li>
-				<li><a href="visor_stl.html">Visor de STL</a></li>
+                <li><a href="visor_stl.html">Visor STL</a></li>
                 <li class="dropdown">
-                    <ul class="dropbtn">▼ Cálculo de Engranajes ▼</ul>
+                    <a href="#" class="dropbtn">Engranajes ▼</a>
                     <div class="dropdown-content">
-                        <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
-                        <a href="modulo.html">Calcular módulo de engranaje</a>
+                        <a href="calculadora_distancia_engranajes.html">Distancia engranajes</a>
+                        <a href="modulo.html">Módulo engranaje</a>
                     </div>
                 </li>
-				 <li class="dropdown">
-                    <ul class="dropbtn">▼ Test de impresión ▼</ul>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Tests ▼</a>
                     <div class="dropdown-content">
                         <a href="flujo.html">Test de flujo</a>
-                        <a href="temperatura.html">Test de temperatura</a>
-						<a href="retracciones.html">Test de retracciones</a>
+                        <a href="temperatura.html">Test temperatura</a>
+                        <a href="retracciones.html">Test retracciones</a>
                     </div>
                 </li>
-				<li class="dropdown">
-                    <ul class="dropbtn">▼ Filamento PET Casero ▼</ul>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">PET Casero ▼</a>
                     <div class="dropdown-content">
-                        <a href="ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
-                        <a href="cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
+                        <a href="ancho_cinta_pet.html">Ancho cinta PET</a>
+                        <a href="cortadora_pet.html">Cortadora PET</a>
                     </div>
                 </li>
-				<li><a href="editor_gcode.html">Editor de Gcode online</a></li>
-				<li><a href="mailto:correo@example.com">Contacto</a></li>
+                <li><a href="editor_gcode.html">Editor Gcode</a></li>
+                <li><a href="mailto:correo@example.com">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="calculator">
-        <label for="boquilla">Diámetro de la boquilla de la extrusora (mm):</label>
-        <input type="number" id="boquilla" required>
+    <main>
+        <section class="calculator">
+            <label for="boquilla">Diámetro de la boquilla (mm):</label>
+            <input type="number" id="boquilla" required min="0.1" step="0.1">
 
-        <label for="espesor">Espesor de la pared de la botella (mm):</label>
-        <input type="number" id="espesor" required>        
+            <label for="espesor">Espesor de la botella (mm):</label>
+            <input type="number" id="espesor" required min="0.01" step="0.01">        
 
-        <button onclick="calculancho()">Calcular ancho</button>
+            <button onclick="calculancho()">Calcular ancho</button>
 
-        <div id="result"></div>
-    </section>
+            <div id="result"></div>
+        </section>
+    </main>
 
     <script>
         function calculancho() {
             const boquilla = parseFloat(document.getElementById('boquilla').value);
             const espesor = parseFloat(document.getElementById('espesor').value);
 
-            if (isNaN(boquilla) || isNaN(espesor) || espesor <= 0) {
-                alert('Por favor, ingrese valores válidos.');
+            if (isNaN(boquilla) || isNaN(espesor) || boquilla <= 0 || espesor <= 0) {
+                document.getElementById('result').innerHTML = 'Por favor, ingrese valores válidos mayores que cero.';
                 return;
             }            
 
             const pi = Math.PI;
             const ancho = (pi * Math.pow(boquilla / 2, 2)) / espesor;
 
-            document.getElementById('result').innerHTML = `El ancho necesario es ${ancho.toFixed(2)} mm`;
+            document.getElementById('result').innerHTML = `El ancho necesario es <strong>${ancho.toFixed(2)} mm</strong>`;
         }
     </script>
 </body>
