@@ -240,63 +240,61 @@
         <nav>
             <ul>
                 <li><a href="https://jota3dprint.github.io/">Inicio</a></li>
-                <li><a href="visor_stl.html">Visor STL</a></li>
+				<li><a href="visor_stl.html">Visor de STL</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Engranajes ▼</a>
+                    <ul class="dropbtn">▼ Cálculo de Engranajes ▼</ul>
                     <div class="dropdown-content">
-                        <a href="calculadora_distancia_engranajes.html">Distancia engranajes</a>
-                        <a href="modulo.html">Módulo engranaje</a>
+                        <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
+                        <a href="modulo.html">Calcular módulo de engranaje</a>
                     </div>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Tests ▼</a>
+				 <li class="dropdown">
+                    <ul class="dropbtn">▼ Test de impresión ▼</ul>
                     <div class="dropdown-content">
                         <a href="flujo.html">Test de flujo</a>
-                        <a href="temperatura.html">Test temperatura</a>
-                        <a href="retracciones.html">Test retracciones</a>
+                        <a href="temperatura.html">Test de temperatura</a>
+						<a href="retracciones.html">Test de retracciones</a>
                     </div>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">PET Casero ▼</a>
+				<li class="dropdown">
+                    <ul class="dropbtn">▼ Filamento PET Casero ▼</ul>
                     <div class="dropdown-content">
-                        <a href="ancho_cinta_pet.html">Ancho cinta PET</a>
-                        <a href="cortadora_pet.html">Cortadora PET</a>
+                        <a href="ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
+                        <a href="cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
                     </div>
                 </li>
-                <li><a href="editor_gcode.html">Editor Gcode</a></li>
-                <li><a href="mailto:correo@example.com">Contacto</a></li>
+				<li><a href="editor_gcode.html">Editor de Gcode online</a></li>
+				<li><a href="mailto:correo@example.com">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="calculator">
-            <label for="boquilla">Diámetro de la boquilla (mm):</label>
-            <input type="number" id="boquilla" required min="0.1" step="0.1">
+    <section class="calculator">
+        <label for="boquilla">Diámetro de la boquilla de la extrusora (mm):</label>
+        <input type="number" id="boquilla" required>
 
-            <label for="espesor">Espesor de la botella (mm):</label>
-            <input type="number" id="espesor" required min="0.01" step="0.01">        
+        <label for="espesor">Espesor de la pared de la botella (mm):</label>
+        <input type="number" id="espesor" required>        
 
-            <button onclick="calculancho()">Calcular ancho</button>
+        <button onclick="calculancho()">Calcular ancho</button>
 
-            <div id="result"></div>
-        </section>
-    </main>
+        <div id="result"></div>
+    </section>
 
     <script>
         function calculancho() {
             const boquilla = parseFloat(document.getElementById('boquilla').value);
             const espesor = parseFloat(document.getElementById('espesor').value);
 
-            if (isNaN(boquilla) || isNaN(espesor) || boquilla <= 0 || espesor <= 0) {
-                document.getElementById('result').innerHTML = 'Por favor, ingrese valores válidos mayores que cero.';
+            if (isNaN(boquilla) || isNaN(espesor) || espesor <= 0) {
+                alert('Por favor, ingrese valores válidos.');
                 return;
             }            
 
             const pi = Math.PI;
             const ancho = (pi * Math.pow(boquilla / 2, 2)) / espesor;
 
-            document.getElementById('result').innerHTML = `El ancho necesario es <strong>${ancho.toFixed(2)} mm</strong>`;
+            document.getElementById('result').innerHTML = `El ancho necesario es ${ancho.toFixed(2)} mm`;
         }
     </script>
 </body>
