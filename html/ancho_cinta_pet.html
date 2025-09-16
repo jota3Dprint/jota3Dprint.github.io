@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9022722711530361"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9022722711530361"
      crossorigin="anonymous"></script>
     <link rel="canonical" href="https://jota3dprint.github.io/html/ancho_cinta_pet.html">
     <!-- Google tag (gtag.js) -->
@@ -14,7 +14,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jota3D</title>
+    <title>Jota3D - Calculadora ancho de cinta PET</title>
     <link rel="icon" href="../icojota3d.jpg" type="image/jpeg">
 
     <style>
@@ -102,8 +102,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 100px 20px 40px;
+            padding: 130px 20px 40px; /* Aumentado el padding-top para evitar solapamiento con header */
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -187,7 +186,7 @@
             }
             
             main {
-                padding: 90px 15px 30px;
+                padding: 120px 15px 30px; /* Ajustado para móviles */
             }
             
             .calculator {
@@ -227,7 +226,7 @@
             }
             
             main {
-                padding: 80px 10px 20px;
+                padding: 110px 10px 20px; /* Ajustado para móviles pequeños */
             }
             
             label {
@@ -242,61 +241,64 @@
         <nav>
             <ul>
                 <li><a href="https://jota3dprint.github.io/">Inicio</a></li>
-				<li><a href="visor_stl.html">Visor de STL</a></li>
+                <li><a href="visor_stl.html">Visor de STL</a></li>
                 <li class="dropdown">
-                    <ul class="dropbtn">▼ Cálculo de Engranajes ▼</ul>
+                    <a href="#" class="dropbtn">▼ Cálculo de Engranajes ▼</a>
                     <div class="dropdown-content">
                         <a href="calculadora_distancia_engranajes.html">Calcular distancia entre engranajes</a>
                         <a href="modulo.html">Calcular módulo de engranaje</a>
                     </div>
                 </li>
-				 <li class="dropdown">
-                    <ul class="dropbtn">▼ Test de impresión ▼</ul>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">▼ Test de impresión ▼</a>
                     <div class="dropdown-content">
                         <a href="flujo.html">Test de flujo</a>
                         <a href="temperatura.html">Test de temperatura</a>
-						<a href="retracciones.html">Test de retracciones</a>
+                        <a href="retracciones.html">Test de retracciones</a>
                     </div>
                 </li>
-				<li class="dropdown">
-                    <ul class="dropbtn">▼ Filamento PET Casero ▼</ul>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">▼ Filamento PET Casero ▼</a>
                     <div class="dropdown-content">
                         <a href="ancho_cinta_pet.html">Calculadora ancho de cinta PET</a>
                         <a href="cortadora_pet.html">Cortadora cinta PET de rodamientos</a>
                     </div>
                 </li>
-				<li><a href="editor_gcode.html">Editor de Gcode online</a></li>
-				<li><a href="mailto:correo@example.com">Contacto</a></li>
+                <li><a href="editor_gcode.html">Editor de Gcode online</a></li>
+                <li><a href="mailto:correo@example.com">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="calculator">
-        <label for="boquilla">Diámetro de la boquilla de la extrusora (mm):</label>
-        <input type="number" id="boquilla" required>
-
-        <label for="espesor">Espesor de la pared de la botella (mm):</label>
-        <input type="number" id="espesor" required>        
-
-        <button onclick="calculancho()">Calcular ancho</button>
-
-        <div id="result"></div>
-    </section>
+    <main>
+        <div class="calculator">
+            <label for="diameter">Diámetro del rodamiento (mm):</label>
+            <input type="number" id="diameter" step="0.1" placeholder="Ej: 8.0">
+            
+            <label for="thickness">Espesor de la cinta (mm):</label>
+            <input type="number" id="thickness" step="0.01" placeholder="Ej: 0.35">
+            
+            <button onclick="calculateWidth()">Calcular ancho</button>
+            
+            <div id="result"></div>
+        </div>
+    </main>
 
     <script>
-        function calculancho() {
-            const boquilla = parseFloat(document.getElementById('boquilla').value);
-            const espesor = parseFloat(document.getElementById('espesor').value);
-
-            if (isNaN(boquilla) || isNaN(espesor) || espesor <= 0) {
-                alert('Por favor, ingrese valores válidos.');
+        function calculateWidth() {
+            const diameter = parseFloat(document.getElementById('diameter').value);
+            const thickness = parseFloat(document.getElementById('thickness').value);
+            
+            if (isNaN(diameter) || isNaN(thickness) || diameter <= 0 || thickness <= 0) {
+                document.getElementById('result').innerHTML = "Por favor, introduce valores válidos mayores que cero.";
                 return;
-            }            
-
-            const pi = Math.PI;
-            const ancho = (pi * Math.pow(boquilla / 2, 2)) / espesor;
-
-            document.getElementById('result').innerHTML = `El ancho necesario es ${ancho.toFixed(2)} mm`;
+            }
+            
+            // Cálculo del ancho de la cinta: π * (diámetro + espesor)
+            const width = Math.PI * (diameter + thickness);
+            
+            document.getElementById('result').innerHTML = 
+                `El ancho necesario de la cinta es: <strong>${width.toFixed(2)} mm</strong>`;
         }
     </script>
 </body>
