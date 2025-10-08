@@ -1,0 +1,32 @@
+ ### Política de Privacidad
+
+  Fecha de entrada en vigor: 8 de octubre de 2025
+
+  Esta política de privacidad rige el uso de la aplicación de software "QRScanner" (en adelante, "la
+  Aplicación") para dispositivos móviles, creada por JotaSoft78 (en adelante, "el Desarrollador").
+
+  Información que Recopilamos
+  La Aplicación por sí misma no recopila, almacena ni comparte ninguna información de identificación
+  personal de sus usuarios (como nombre, dirección, número de teléfono o dirección de correo electrónico).
+  El funcionamiento principal de la aplicación no requiere de estos datos.
+
+  Servicios de Terceros
+  Para poder ofrecer la aplicación de forma gratuita, utilizamos servicios de terceros que pueden recopilar
+  información.
+
+   * Google AdMob:
+   * Cámara (`android.permission.CAMERA`): Este permiso es esencial y se utiliza con el único propósito de que
+      el dispositivo pueda escanear códigos QR y códigos de barras. La Aplicación no almacena, guarda ni
+     transmite ninguna imagen o vídeo capturado por la cámara.
+  El Desarrollador valora su confianza al utilizar la Aplicación. Sin embargo, recuerde que ningún método de
+   transmisión por Internet o de almacenamiento electrónico es 100% seguro y fiable, y no podemos garantizar
+   su seguridad absoluta.
+
+  Cambios en esta Política de Privacidad
+  Podemos actualizar nuestra Política de Privacidad ocasionalmente. Por lo tanto, se le aconseja que revise
+  esta página periódicamente para cualquier cambio. Le notificaremos de cualquier cambio publicando la nueva
+   Política de Privacidad en esta página.
+
+  Contacto
+  Si tiene alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dude en contactarnos en:
+  remeberx80@gmail.com
