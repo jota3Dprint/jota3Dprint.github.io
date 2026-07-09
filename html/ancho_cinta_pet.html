@@ -169,6 +169,50 @@
             word-break: break-word;
         }
 
+        /* Sección de descarga de la app Android */
+        .app-download {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0 30px;
+            text-align: center;
+        }
+
+        .app-download h2 {
+            color: #00adb5;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .app-download p {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+
+        .app-download a.play-store-link {
+            display: inline-block;
+            line-height: 0;
+            transition: opacity 0.3s, transform 0.2s;
+        }
+
+        .app-download a.play-store-link:hover {
+            opacity: 0.85;
+            transform: scale(1.03);
+        }
+
+        .app-download img {
+            height: 55px;
+            width: auto;
+        }
+
         /* Media Queries para dispositivos móviles */
         @media (max-width: 768px) {
             h1 {
@@ -195,6 +239,10 @@
             
             input, button {
                 padding: 10px;
+            }
+
+            .app-download img {
+                height: 48px;
             }
         }
 
@@ -231,6 +279,14 @@
             
             label {
                 font-size: 0.9rem;
+            }
+
+            .app-download {
+                padding: 20px 15px;
+            }
+
+            .app-download img {
+                height: 42px;
             }
         }
     </style>
@@ -282,6 +338,14 @@
 
             <div id="result"></div>
         </section>
+
+        <section class="app-download">
+            <h2>¿Prefieres calcularlo desde el móvil?</h2>
+            <p>Descarga la app oficial "PET Calculator" en Google Play y llévate esta calculadora siempre contigo.</p>
+            <a class="play-store-link" href="https://play.google.com/store/apps/details?id=com.jotasoft78.petcalculator" target="_blank" rel="noopener noreferrer">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play">
+            </a>
+        </section>
     </main>
 
     <script>
@@ -302,4 +366,3 @@
     </script>
 </body>
 </html>
-
